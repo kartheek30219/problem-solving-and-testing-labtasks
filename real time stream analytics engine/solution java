@@ -1,0 +1,37 @@
+import java.util.*;
+public class StreamAnalytics {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        HashMap<String, ArrayList<Integer>> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            String id = sc.next();
+            int temp = sc.nextInt();
+            if (temp > 50) {
+                map.putIfAbsent(id, new ArrayList<>());
+                map.get(id).add(temp);
+            }
+        }
+        ArrayList<Map.Entry<String, Double>> result = new ArrayList<>();
+        for (String id : map.keySet()) {
+            ArrayList<Integer> list = map.get(id);
+            double sum = 0;
+            for (int t : list) {
+                sum += t;
+            }
+            result.add(
+                new AbstractMap.SimpleEntry<>(
+                    id,
+                    sum / list.size()
+                )
+            );
+        }
+        result.sort(
+            (a, b) -> Double.compare(b.getValue(), a.getValue())
+        );
+        for (Map.Entry<String, Double> e : result) {
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        sc.close();
+    }
+}
