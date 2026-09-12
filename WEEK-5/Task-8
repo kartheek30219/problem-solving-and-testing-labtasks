@@ -1,0 +1,19 @@
+class Solution {
+    private static boolean check(String word,String pattern){
+        for(int i=0;i<word.length();i++){
+            if(word.indexOf(word.charAt(i))!=pattern.indexOf(pattern.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+    public List<String> findAndReplacePattern(String[] words, String pattern) {
+        List<String> ans=new ArrayList<>();
+        for(String word:words){
+            if(check(word,pattern)){
+                ans.add(word);
+            }
+        }
+        return ans;
+    }
+}
