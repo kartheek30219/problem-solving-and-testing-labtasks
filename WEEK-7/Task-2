@@ -1,0 +1,58 @@
+import java.util.*;
+
+class Student {
+}
+
+class Rockstar {
+}
+
+class Hacker {
+}
+
+public class InstanceOFTutorial {
+
+    static String count(ArrayList mylist) {
+        int a = 0;
+        int b = 0;
+        int c = 0;
+
+        for (Object obj : mylist) {
+
+            if (obj instanceof Student)
+                a++;
+
+            if (obj instanceof Rockstar)
+                b++;
+
+            if (obj instanceof Hacker)
+                c++;
+        }
+
+        return a + " " + b + " " + c;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList mylist = new ArrayList();
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+
+            String s = sc.next();
+
+            if (s.equals("Student"))
+                mylist.add(new Student());
+
+            if (s.equals("Rockstar"))
+                mylist.add(new Rockstar());
+
+            if (s.equals("Hacker"))
+                mylist.add(new Hacker());
+        }
+
+        System.out.println(count(mylist));
+    }
+}
